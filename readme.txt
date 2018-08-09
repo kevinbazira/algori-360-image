@@ -69,8 +69,8 @@ Nope. Algori 360 Image only works with Gutenberg.
 
 == Credits ==
 
-* Based on create-guten-block https://github.com/ahmadawais/create-guten-block , (C) 2018 Ahmad Awais, [MIT] (https://opensource.org/licenses/MIT)
-* A-Frame https://aframe.io/ , (C) 2015-2018 Mozilla and A-Frame Authors, [MIT] (https://opensource.org/licenses/MIT)
+* Based on [create-guten-block](https://github.com/ahmadawais/create-guten-block) , (C) 2018 Ahmad Awais, [MIT](https://opensource.org/licenses/MIT)
+* [A-Frame](https://aframe.io/) , (C) 2015-2018 Mozilla and A-Frame Authors, [MIT](https://opensource.org/licenses/MIT)
 
 Algori 360 Image WordPress Plugin, Copyright 2018 Kevin Bazira
 Algori 360 Image is distributed under the terms of the GNU GPL

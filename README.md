@@ -23,7 +23,7 @@ Please Note that this plugin;
 # Features
 
 * No Flash Needed
-* Compatible with Modern Browsers like Chrome, Firefox, IE8, IE9, Edge and Safari.
+* Compatible with Modern Browsers like Chrome, Firefox, Edge and Safari.
 * Supports VR (Virtual Reality) headsets such as Vive, Rift, Windows Mixed Reality, Daydream, GearVR and Cardboard.
 * Supports JPG.
 * Supports both mouse and touch.

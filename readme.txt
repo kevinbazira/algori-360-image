@@ -3,6 +3,7 @@ Contributors: kevinbazira
 Tags: gutenberg, block, 360, image, photo, panorama, spherical-images, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 Requires at least: 4.9.6
 Tested up to: 4.9.8
+Requires PHP: 5.6.0
 Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
@@ -22,7 +23,7 @@ Please Note that this plugin;
 == Features ===
 
 1. No Flash Needed
-2. Compatible with Modern Browsers like Chrome, Firefox, IE8, IE9, Edge and Safari.
+2. Compatible with Modern Browsers like Chrome, Firefox, Edge and Safari.
 3. Supports VR (Virtual Reality) headsets such as Vive, Rift, Windows Mixed Reality, Daydream, GearVR and Cardboard.
 4. Supports JPG.
 5. Supports both mouse and touch.
@@ -45,6 +46,11 @@ Please Note that this plugin;
 4. At this point, you can adjust your image's dimensions (width and height) using the Gutenberg block inspector section.
 5. Click "Publish" to view your new web page with a 360° image.
 6. Congratulations :D
+
+== Screenshots ==
+
+1. Admin View - 360 Image Gutenberg Block in action. 
+   ( Upload 360° image and adjust its dimensions )
 
 == Frequently Asked Questions ==
 

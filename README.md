@@ -12,6 +12,10 @@ Requires at least: WP 4.9.6
 
 Algori 360 Image is a Gutenberg Block Plugin that enables you add interactive 360° images to your WordPress website. 
 
+<p align="center">
+  <img src="https://ps.w.org/360-image/assets/screenshot-1.gif" alt="Algori Social Share Buttons WordPress Gutenberg Plugin">
+</p>
+
 # Description 
 
 Algori 360 Image is a Gutenberg Block Plugin that enables you add interactive 360° images to your WordPress website. Adding immersive panorama images, spherical images, equirectangular photos, full-sphere 3D images and VR (Virtual Reality) photography will boost user engagement and increase revenue for your site.

@@ -89,7 +89,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	
 	keywords: [ // Block search keywords
-		__( 'panorama image - three sixty degree photo' ), 
+		__( 'algori panorama image - three sixty degree photo' ), 
 		__( 'spherical photo - full-sphere 3D image' ), 
 		__( 'equirectangular image - VR (Virtual Reality) photography' ), 
 	],
@@ -112,7 +112,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
-	edit: function( { attributes, setAttributes, isSelected, className, noticeOperations, noticeUI } ) {
+	edit: withNotices( ( { attributes, setAttributes, isSelected, className, noticeOperations, noticeUI } ) => {
 		
 		const { url, title, align, width, height, contentAlign, id } = attributes;
 		const updateWidth = ( width ) => setAttributes( { width: parseInt( width, 10 ) } );
@@ -142,7 +142,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 					<Toolbar>
 						<MediaUpload
 							onSelect={ onSelectImage }
-							type="image"
+							allowedTypes={ [ 'image' ] }
 							value={ id }
 							render={ ( { open } ) => (
 								<IconButton
@@ -203,9 +203,9 @@ registerBlockType( 'cgb/block-algori-360-image', {
 						} }
 						onSelect={ onSelectImage }
 						accept="image/*"
-						type="image"
+						allowedTypes={ [ 'image' ] }
 						notices={ noticeUI }
-						
+						onError={ noticeOperations.createErrorNotice }
 					/>
 				</Fragment>
 			);
@@ -223,7 +223,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 			</Fragment>
 		);
 		
-	},
+	} ),
 
 	/**
 	 * The save function defines the way in which the different attributes should be combined
@@ -233,7 +233,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
-	save: function( { attributes, className } ) {
+	save: ( { attributes, className } ) => {
 		
 		const { url, title, align, width, height, contentAlign, id } = attributes;
 		

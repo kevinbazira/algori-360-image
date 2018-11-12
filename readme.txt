@@ -2,9 +2,9 @@
 Contributors: kevinbazira
 Tags: gutenberg, block, 360, image, photo, panorama, spherical-images, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 Requires at least: 4.9.6
-Tested up to: 4.9.8
+Tested up to: 5.0
 Requires PHP: 5.6.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -64,13 +64,18 @@ Nope. Algori 360 Image only works with Gutenberg.
 
 == Changelog ==
 
+= 1.0.1 - Nov 12 2018 =
+* Changed: MediaPlaceholder and MediaUpload "type" to "allowedTypes" to support Gutenberg >= 4.2.0
+* Added: withNotices to support noticeOperations
+* Added: algori in the block keywords
+
 = 1.0.0 - Aug 4 2018 =
 * Initial Release
 
 == Credits ==
 
-* Based on [create-guten-block](https://github.com/ahmadawais/create-guten-block) , (C) 2018 Ahmad Awais, [MIT](https://opensource.org/licenses/MIT)
-* [A-Frame](https://aframe.io/) , (C) 2015-2018 Mozilla and A-Frame Authors, [MIT](https://opensource.org/licenses/MIT)
+* Based on create-guten-block https://github.com/ahmadawais/create-guten-block , (C) 2018 Ahmad Awais, [MIT] (https://opensource.org/licenses/MIT)
+* A-Frame https://aframe.io/ , (C) 2015-2018 Mozilla and A-Frame Authors, [MIT] (https://opensource.org/licenses/MIT)
 
 Algori 360 Image WordPress Plugin, Copyright 2018 Kevin Bazira
 Algori 360 Image is distributed under the terms of the GNU GPL

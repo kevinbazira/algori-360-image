@@ -4,7 +4,7 @@
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
  */
- 
+
  
 /**
  * WordPress dependencies
@@ -51,9 +51,11 @@ const blockAttributes = {
 	},
 	width: {
 		type: 'number',
+		default: 600,
 	},
 	height: {
 		type: 'number',
+		default: 300,
 	},
 	contentAlign: {
 		type: 'string',
@@ -96,14 +98,6 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	
 	attributes: blockAttributes,  // Block attributes for editing in the block inspector.
 	
-	getEditWrapperProps( attributes ) {
-		const { align, width } = attributes;
-		if ( 'left' === align || 'center' === align || 'right' === align || 'wide' === align || 'full' === align ) {
-			return { 'data-align': align, 'data-resized': !! width };
-		}
-	},
-	
-
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
 	 * This represents what the editor will render when the block is used.
@@ -117,7 +111,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 		const { url, title, align, width, height, contentAlign, id } = attributes;
 		const updateWidth = ( width ) => setAttributes( { width: parseInt( width, 10 ) } );
 		const updateHeight = ( height ) => setAttributes( { height: parseInt( height, 10 ) } );
-		const updateAlignment = ( nextAlign ) => setAttributes( { align: nextAlign } );
+		
 		const onSelectImage = ( media ) => {
 			if ( ! media || ! media.url ) {
 				setAttributes( { url: undefined, id: undefined } );
@@ -126,19 +120,17 @@ registerBlockType( 'cgb/block-algori-360-image', {
 			setAttributes( { url: media.url, id: media.id } );
 		};
 		
+		const onSelectURL = ( newURL ) => {
+
+			if ( newURL !== url ) {
+				setAttributes( { url: newURL, id: undefined } );
+			}
+			
+		}
+		
 		const controls = ( // Set Block and Inspector Controls
 			<Fragment>
 				<BlockControls>
-					<BlockAlignmentToolbar
-						value={ align }
-						onChange={ updateAlignment }
-					/>
-					<AlignmentToolbar
-						value={ contentAlign }
-						onChange={ ( nextAlign ) => {
-							setAttributes( { contentAlign: nextAlign } );
-						} }
-					/>
 					<Toolbar>
 						<MediaUpload
 							onSelect={ onSelectImage }
@@ -158,14 +150,13 @@ registerBlockType( 'cgb/block-algori-360-image', {
 				{ !! url && (
 					<InspectorControls>
 						<PanelBody title={ __( '360° Image Settings' ) }>
-							<div className="core-blocks-image__dimensions">
-								<p className="core-blocks-image__dimensions__row">
+							<div>
+								<p>
 									{ __( 'Image Dimensions' ) }
 								</p>
-								<div className="core-blocks-image__dimensions__row">
+								<div>
 									<TextControl
 										type="number"
-										className="core-blocks-image__dimensions__width"
 										label={ __( 'Width' ) }
 										value={ width !== undefined ? width : '' }
 										placeholder={ 600 }
@@ -174,7 +165,6 @@ registerBlockType( 'cgb/block-algori-360-image', {
 									/>
 									<TextControl
 										type="number"
-										className="core-blocks-image__dimensions__height"
 										label={ __( 'Height' ) }
 										value={ height !== undefined ? height : '' }
 										placeholder={ 300 }
@@ -199,9 +189,10 @@ registerBlockType( 'cgb/block-algori-360-image', {
 						className={ className }
 						labels={ {
 							title: __( '360 Image' ),
-							name: __( 'a 360° image' ),
+							instructions: __( 'Drag a 360° image, upload a new one, insert from URL or select a file from your library.' ),
 						} }
 						onSelect={ onSelectImage }
+						onSelectURL={ onSelectURL }
 						accept="image/*"
 						allowedTypes={ [ 'image' ] }
 						notices={ noticeUI }
@@ -215,11 +206,11 @@ registerBlockType( 'cgb/block-algori-360-image', {
 		return ( // Return 360 image with element settings (css classes) and block controls. Get image using either { url } or { id }
 			<Fragment>
 				{ controls }
-				<div>
-					<a-scene class="wp-block-cgb-block-algori-360-image-embedded-scene" style={ { width, height } } embedded>
+				<figure style={ { width, height } } >
+					<a-scene embedded>
 					  <a-sky src={ url }></a-sky>
 					</a-scene>
-				</div>
+				</figure>
 			</Fragment>
 		);
 		
@@ -233,17 +224,46 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
+	 
 	save: ( { attributes, className } ) => {
 		
 		const { url, title, align, width, height, contentAlign, id } = attributes;
 		
 		return (
-			<div>
-				<a-scene className="wp-block-cgb-block-algori-360-image-embedded-scene" style={ { width, height } } embedded="">
+			<figure style={ { width, height } } >
+				<a-scene embedded="">
 				  <a-sky src={ url }></a-sky>
 				</a-scene>
-			</div>
+			</figure>
 		);
 		
 	},
+	
+	/**
+	 * Array of deprecated forms of this block.
+	 *
+	 * @link https://wordpress.org/gutenberg/handbook/block-api/deprecated-blocks/
+	 */
+	deprecated: [ 
+		{
+			attributes: {
+				...blockAttributes,
+			},
+			
+			save: ( { attributes, className } ) => {
+		
+				const { url, title, align, width, height, contentAlign, id } = attributes;
+				
+				return (
+					<div>
+						<a-scene className="wp-block-cgb-block-algori-360-image-embedded-scene" style={ { width, height } } embedded="">
+						  <a-sky src={ url }></a-sky>
+						</a-scene>
+					</div>
+				);
+				
+			},
+		}
+	],
+	
 } );

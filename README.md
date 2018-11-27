@@ -4,9 +4,9 @@ Contributors: Kevin Bazira(http://kevinbazira.com)
 
 Tags: gutenberg, block, 360, image, photo, panorama, spherical-images, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 
-Requires at least: WP 4.9.6
+Requires at least: WP 4.9.8
 * Tested up to: WP 5.0
-* Stable tag: 1.0.1
+* Stable tag: 1.0.2
 * License: GNU General Public License v2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -63,6 +63,18 @@ Nope. Algori 360 Image only works with Gutenberg.
 
 # Changelog 
 
+= 1.0.2 - Nov 27 2018 =
+* Added: Default 360° image width (600px) and height(300px)
+* Added: "Insert from URL" button to MediaPlaceholder
+* Removed: MediaPlaceholder labels name
+* Added: MediaPlaceholder labels instructions
+* Removed: core-blocks-image class from all InspectorControls
+* Removed: AlignmentToolbar
+* Removed: BlockAlignmentToolbar
+* Changed: 360° block div to figure
+* Changed: styles in CSS files to support figure
+* Added: Social call to action into README.md
+
 = 1.0.1 - Nov 12 2018 =
 * Changed: MediaPlaceholder and MediaUpload "type" to "allowedTypes" to support Gutenberg >= 4.2.0
 * Added: withNotices to support noticeOperations
@@ -78,3 +90,8 @@ Nope. Algori 360 Image only works with Gutenberg.
 
 Algori 360 Image WordPress Plugin, Copyright 2018 Kevin Bazira
 Algori 360 Image is distributed under the terms of the GNU GPL
+
+
+_If you like this project, please 🌟 star it here_ [![GitHub stars](https://img.shields.io/github/stars/kevinbazira/algori-360-image.svg?label=Stars&style=social)](https://github.com/kevinbazira/algori-360-image)
+<br/>
+_Follow me 👋 on Twitter for more projects like this_ [![Tweet to say Hi](https://img.shields.io/twitter/follow/kevinbazira.svg?style=social&label=Tweet%20@kevinbazira)](https://twitter.com/kevinbazira/)

@@ -8,6 +8,8 @@
     "eject": "cgb-scripts eject"
   },
   "dependencies": {
-    "cgb-scripts": "1.9.8"
+    "aframe": "^0.8.2",
+    "cgb-scripts": "1.11.1",
+    "classnames": "^2.2.6"
   }
 }

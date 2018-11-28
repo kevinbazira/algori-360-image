@@ -5,7 +5,7 @@
  * Enqueue CSS/JS of all the blocks.
  *
  * @since   1.0.0
- * @package Algori_360_Image
+ * @package CGB
  */
 
 // Exit if accessed directly.
@@ -50,13 +50,11 @@ function algori_360_image_cgb_editor_assets() {
 	wp_enqueue_script(
 		'algori_360_image-cgb-block-js', // Handle.
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
+		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 		true // Enqueue the script in the footer.
 	);
 	
-	wp_enqueue_script( 'algori_360_image-cgb-a-frame-js', plugins_url( '/dist/aframe-v0.8.2.min.js', dirname( __FILE__ ) ) );
-
 	// Styles.
 	wp_enqueue_style(
 		'algori_360_image-cgb-block-editor-css', // Handle.

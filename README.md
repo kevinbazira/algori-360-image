@@ -1,12 +1,12 @@
 # Algori 360 Image 
 
-Contributors: Kevin Bazira(http://kevinbazira.com)
+Contributors: [Kevin Bazira](http://kevinbazira.com)
 
 Tags: gutenberg, block, 360, image, photo, panorama, spherical-images, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 
-Requires at least: WP 4.9.8
-* Tested up to: WP 5.0
-* Stable tag: 1.0.2
+Requires at least: WP 5.0.0
+* Tested up to: WP 5.1.1
+* Stable tag: 1.0.3
 * License: GNU General Public License v2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -63,33 +63,42 @@ Nope. Algori 360 Image only works with Gutenberg.
 
 # Changelog 
 
+= 1.0.3 - Apr 29 2019 =
+* Upgraded cgb-scripts from 1.11.1 to 1.13.0
+* Improved documentation to match WP standards
+* Added MediaUploadCheck wrapper onto MediaUpload to make sure the current user has Upload permissions
+* Added BlockAlignmentToolbar to enable users to choose left, right, center, wide, and full width alignments
+* Added alignment styles for left, right, center, wide and full width alignments
+* Added Notice in block inspector section to notify user when Full/Wide width alignments are chosen
+* Removed unused styles from editor.scss
+
 = 1.0.2 - Nov 27 2018 =
-* Added: Default 360° image width (600px) and height(300px)
-* Added: "Insert from URL" button to MediaPlaceholder
-* Removed: MediaPlaceholder labels name
-* Added: MediaPlaceholder labels instructions
-* Removed: core-blocks-image class from all InspectorControls
-* Removed: AlignmentToolbar
-* Removed: BlockAlignmentToolbar
-* Changed: 360° block div to figure
-* Changed: styles in CSS files to support figure
-* Added: Social call to action into README.md
+* Added Default 360° image width (600px) and height(300px)
+* Added "Insert from URL" button to MediaPlaceholder
+* Removed MediaPlaceholder labels name
+* Added MediaPlaceholder labels instructions
+* Removed core-blocks-image class from all InspectorControls
+* Removed AlignmentToolbar
+* Removed BlockAlignmentToolbar
+* Changed 360° block div to figure
+* Changed styles in CSS files to support figure
+* Added Social call to action into README.md
 
 = 1.0.1 - Nov 12 2018 =
-* Changed: MediaPlaceholder and MediaUpload "type" to "allowedTypes" to support Gutenberg >= 4.2.0
-* Added: withNotices to support noticeOperations
-* Added: algori in the block keywords
+* Changed MediaPlaceholder and MediaUpload "type" to "allowedTypes" to support Gutenberg >= 4.2.0
+* Added withNotices to support noticeOperations
+* Added algori in the block keywords
 
 = 1.0.0 - Aug 4 2018 =
 * Initial Release
 
 # Credits
 
-* Based on create-guten-block https://github.com/ahmadawais/create-guten-block , (C) 2018 Ahmad Awais, [MIT] (https://opensource.org/licenses/MIT)
-* A-Frame https://aframe.io/ , (C) 2015-2018 Mozilla and A-Frame Authors, [MIT] (https://opensource.org/licenses/MIT)
+* [create-guten-block](https://github.com/ahmadawais/create-guten-block) , (C) 2018 Ahmad Awais, [MIT](https://opensource.org/licenses/MIT)
+* [A-Frame](https://aframe.io/) , (C) 2015-2018 Mozilla and A-Frame Authors, [MIT](https://opensource.org/licenses/MIT)
 
-Algori 360 Image WordPress Plugin, Copyright 2018 Kevin Bazira
-Algori 360 Image is distributed under the terms of the GNU GPL
+Algori 360 Image WordPress Plugin, Copyright 2019 Kevin Bazira<br/>
+Algori 360 Image is distributed under the terms of the GNU GPL<br/><br/>
 
 
 _If you like this project, please 🌟 star it here_ [![GitHub stars](https://img.shields.io/github/stars/kevinbazira/algori-360-image.svg?label=Stars&style=social)](https://github.com/kevinbazira/algori-360-image)

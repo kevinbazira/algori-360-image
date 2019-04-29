@@ -14,7 +14,8 @@ const {
 	PanelBody,
 	TextControl,  
 	Toolbar, 
-	withNotices } = wp.components; // import { IconButton, PanelBody, RangeControl, ToggleControl, Toolbar, withNotices } from '@wordpress/components';
+	withNotices,
+	Notice	} = wp.components; // import { IconButton, PanelBody, RangeControl, ToggleControl, Toolbar, withNotices } from '@wordpress/components';
 const { Fragment } = wp.element; // import { Fragment } from '@wordpress/element';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -24,6 +25,7 @@ const {
 	BlockAlignmentToolbar,
 	MediaPlaceholder,
 	MediaUpload,
+	MediaUploadCheck,
 	AlignmentToolbar,
 	RichText, 
 } = wp.editor; // Import * from @wordpress/editor 
@@ -37,6 +39,13 @@ const {
 import './style.scss';
 import './editor.scss';
 
+
+/**
+ * Module Constants
+ */
+const ALLOWED_MEDIA_TYPES = [ 'image' ];
+
+
 const blockAttributes = {
 	title: {
 		type: 'array',
@@ -48,6 +57,10 @@ const blockAttributes = {
 	},
 	align: {
 		type: 'string',
+	},
+	widthBeforeWideFullAlignments: {
+		type: 'number',
+		default: 600,
 	},
 	width: {
 		type: 'number',
@@ -108,8 +121,8 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 */
 	edit: withNotices( ( { attributes, setAttributes, isSelected, className, noticeOperations, noticeUI } ) => {
 		
-		const { url, title, align, width, height, contentAlign, id } = attributes;
-		const updateWidth = ( width ) => setAttributes( { width: parseInt( width, 10 ) } );
+		const { url, title, align, widthBeforeWideFullAlignments, width, height, contentAlign, id } = attributes;
+		const updateWidth = ( width ) => setAttributes( { width: parseInt( width, 10 ), widthBeforeWideFullAlignments: parseInt( width, 10 ) } );
 		const updateHeight = ( height ) => setAttributes( { height: parseInt( height, 10 ) } );
 		
 		const onSelectImage = ( media ) => {
@@ -128,23 +141,39 @@ registerBlockType( 'cgb/block-algori-360-image', {
 			
 		}
 		
+		const updateAlignment = ( nextAlign ) => {
+
+			const extraUpdatedAttributes = [ 'wide', 'full' ].indexOf( nextAlign ) !== -1 ?
+				{ width: undefined } :
+				{ width: widthBeforeWideFullAlignments };
+
+			setAttributes( { ...extraUpdatedAttributes, align: nextAlign } );
+
+		} 
+		
 		const controls = ( // Set Block and Inspector Controls
 			<Fragment>
 				<BlockControls>
+					<BlockAlignmentToolbar
+						value={ align }
+						onChange={ updateAlignment }
+					/>
 					<Toolbar>
-						<MediaUpload
-							onSelect={ onSelectImage }
-							allowedTypes={ [ 'image' ] }
-							value={ id }
-							render={ ( { open } ) => (
-								<IconButton
-									className="components-toolbar__control"
-									label={ __( 'Edit image' ) }
-									icon="edit"
-									onClick={ open }
-								/>
-							) }
-						/>
+						<MediaUploadCheck>
+							<MediaUpload
+								onSelect={ onSelectImage }
+								allowedTypes={ ALLOWED_MEDIA_TYPES }
+								value={ id }
+								render={ ( { open } ) => (
+									<IconButton
+										className="components-toolbar__control"
+										label={ __( 'Edit image' ) }
+										icon="edit"
+										onClick={ open }
+									/>
+								) }
+							/>
+						</MediaUploadCheck>
 					</Toolbar>
 				</BlockControls>
 				{ !! url && (
@@ -155,14 +184,26 @@ registerBlockType( 'cgb/block-algori-360-image', {
 									{ __( 'Image Dimensions' ) }
 								</p>
 								<div>
-									<TextControl
-										type="number"
-										label={ __( 'Width' ) }
-										value={ width !== undefined ? width : '' }
-										placeholder={ 600 }
-										min={ 1 }
-										onChange={ updateWidth }
-									/>
+									{
+										[ 'wide', 'full' ].indexOf( align ) !== -1 ?
+										<Notice status="informational" isDismissible="false" >
+											{__( 'The' ) } &nbsp; 
+											<strong>{__( 'Width' ) }</strong> &nbsp;  
+											{__( 'setting has been disabled because you have chosen either' ) } &nbsp;  
+											<strong>{__( 'Full' ) }</strong> &nbsp; 
+											{__( 'or' ) } &nbsp; 
+											<strong>{__( 'Wide' ) }</strong> &nbsp; 
+											{__( 'width alignment from the block toolbar.' ) } 
+										</Notice> :
+										<TextControl
+											type="number"
+											label={ __( 'Width' ) }
+											value={ width !== undefined ? width : '' }
+											placeholder={ 600 }
+											min={ 1 }
+											onChange={ updateWidth }
+										/>
+									}
 									<TextControl
 										type="number"
 										label={ __( 'Height' ) }
@@ -194,7 +235,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 						onSelect={ onSelectImage }
 						onSelectURL={ onSelectURL }
 						accept="image/*"
-						allowedTypes={ [ 'image' ] }
+						allowedTypes={ ALLOWED_MEDIA_TYPES }
 						notices={ noticeUI }
 						onError={ noticeOperations.createErrorNotice }
 					/>
@@ -206,7 +247,10 @@ registerBlockType( 'cgb/block-algori-360-image', {
 		return ( // Return 360 image with element settings (css classes) and block controls. Get image using either { url } or { id }
 			<Fragment>
 				{ controls }
-				<figure style={ { width, height } } >
+				<figure 
+					style={ [ 'wide', 'full' ].indexOf( align ) !== -1 ? { height } : { width, height } } // Remove width from style on wide alignments i.e delegate it to theme
+					className={ `wp-block-cgb-block-algori-360-image align${align}` } 
+				>
 					<a-scene embedded>
 					  <a-sky src={ url }></a-sky>
 					</a-scene>
@@ -230,7 +274,10 @@ registerBlockType( 'cgb/block-algori-360-image', {
 		const { url, title, align, width, height, contentAlign, id } = attributes;
 		
 		return (
-			<figure style={ { width, height } } >
+			<figure 
+				style={ [ 'wide', 'full' ].indexOf( align ) !== -1 ? { height } : { width, height } } 
+				className={ `align${align}` } 
+			>
 				<a-scene embedded="">
 				  <a-sky src={ url }></a-sky>
 				</a-scene>
@@ -245,6 +292,25 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/deprecated-blocks/
 	 */
 	deprecated: [ 
+		{
+			attributes: {
+				...blockAttributes,
+			},
+			
+			save: ( { attributes, className } ) => {
+		
+				const { url, title, align, width, height, contentAlign, id } = attributes;
+				
+				return (
+					<figure style={ { width, height } } >
+						<a-scene embedded="">
+						  <a-sky src={ url }></a-sky>
+						</a-scene>
+					</figure>
+				);
+				
+			},
+		},
 		{
 			attributes: {
 				...blockAttributes,

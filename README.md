@@ -5,7 +5,7 @@ Contributors: [Kevin Bazira](http://kevinbazira.com)
 Tags: gutenberg, block, 360, image, photo, panorama, spherical-images, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 
 Requires at least: WP 5.0.0
-* Tested up to: WP 5.1.1
+* Tested up to: WP 5.2
 * Stable tag: 1.0.3
 * License: GNU General Public License v2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html

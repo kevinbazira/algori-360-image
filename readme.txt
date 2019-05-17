@@ -2,7 +2,7 @@
 Contributors: kevinbazira
 Tags: gutenberg, block, 360, image, photo, panorama, spherical-images, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 Requires at least: 5.0.0
-Tested up to: 5.1.1
+Tested up to: 5.2
 Requires PHP: 5.6.0
 Stable tag: 1.0.3
 License: GNU General Public License v2 or later

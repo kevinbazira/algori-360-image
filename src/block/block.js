@@ -14,6 +14,7 @@ const {
 	PanelBody,
 	TextControl,  
 	Toolbar, 
+	Spinner,
 	withNotices,
 	Notice	} = wp.components; // import { IconButton, PanelBody, RangeControl, ToggleControl, Toolbar, withNotices } from '@wordpress/components';
 const { Fragment } = wp.element; // import { Fragment } from '@wordpress/element';
@@ -29,7 +30,7 @@ const {
 	AlignmentToolbar,
 	RichText, 
 } = wp.editor; // Import * from @wordpress/editor 
-
+const { isBlobURL } = wp.blob;
 
 /**
  * Internal dependencies
@@ -247,11 +248,13 @@ registerBlockType( 'cgb/block-algori-360-image', {
 		return ( // Return 360 image with element settings (css classes) and block controls. Get image using either { url } or { id }
 			<Fragment>
 				{ controls }
+				{ isBlobURL( url ) && <Spinner /> }
 				<figure 
 					style={ [ 'wide', 'full' ].indexOf( align ) !== -1 ? { height } : { width, height } } // Remove width from style on wide alignments i.e delegate it to theme
 					className={ `wp-block-cgb-block-algori-360-image align${align}` } 
 				>
-					<a-scene embedded>
+					<a-scene loading-screen="enabled: false;" embedded>
+					  <a-entity camera="" look-controls="reverseMouseDrag: true"></a-entity>
 					  <a-sky src={ url }></a-sky>
 					</a-scene>
 				</figure>
@@ -278,7 +281,8 @@ registerBlockType( 'cgb/block-algori-360-image', {
 				style={ [ 'wide', 'full' ].indexOf( align ) !== -1 ? { height } : { width, height } } 
 				className={ `align${align}` } 
 			>
-				<a-scene embedded="">
+				<a-scene loading-screen="enabled: false;" embedded="">
+				  <a-entity camera="" look-controls="reverseMouseDrag: true"></a-entity>
 				  <a-sky src={ url }></a-sky>
 				</a-scene>
 			</figure>
@@ -292,6 +296,28 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/deprecated-blocks/
 	 */
 	deprecated: [ 
+		{
+			attributes: {
+				...blockAttributes,
+			},
+			
+			save: ( { attributes, className } ) => {
+		
+				const { url, title, align, width, height, contentAlign, id } = attributes;
+				
+				return (
+					<figure 
+						style={ [ 'wide', 'full' ].indexOf( align ) !== -1 ? { height } : { width, height } } 
+						className={ `align${align}` } 
+					>
+						<a-scene embedded="">
+						  <a-sky src={ url }></a-sky>
+						</a-scene>
+					</figure>
+				);
+				
+			},
+		},
 		{
 			attributes: {
 				...blockAttributes,

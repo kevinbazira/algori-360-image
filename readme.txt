@@ -4,7 +4,7 @@ Tags: gutenberg, block, 360, image, photo, panorama, spherical-images, equirecta
 Requires at least: 5.0.0
 Tested up to: 5.2
 Requires PHP: 5.6.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -67,6 +67,13 @@ Nope. Algori 360 Image only works with Gutenberg.
 Most WordPress themes that are optimized for Gutenberg will work well with Algori 360 Image. To get a full experience of the next-generation WordPress block editor, you’ll need a Gutenberg-ready WordPress theme, like [Algori Blogger](https://wordpress.org/themes/algori-blogger/) or [Algori Shop](https://wordpress.org/themes/algori-shop/).
 
 == Changelog ==
+
+= 1.0.4 - Jul 5 2019 =
+* Upgraded A-Frame from v0.8.2 to v0.9.0
+* Added Spinner to show 360 image loading is in progress instead of blank figure.
+* Set loading-screen option default value to "enabled: false;" 
+* Fixed both mouse and touch dragging direction. Now dragging to the left actually rotates the 360 image to the left and same applies to the right.
+* Added deprecated block for Algori 360 Image v1.0.3
 
 = 1.0.3 - Apr 29 2019 =
 * Upgraded cgb-scripts from 1.11.1 to 1.13.0

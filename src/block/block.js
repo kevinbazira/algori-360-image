@@ -1,11 +1,10 @@
 /**
  * BLOCK: algori-360-image
  *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
+ * Algori 360 Image is a Gutenberg Block Plugin that enables you add interactive 360° images to your WordPress website.
  */
 
- 
+
 /**
  * WordPress dependencies
  */
@@ -29,8 +28,9 @@ const {
 	MediaUploadCheck,
 	AlignmentToolbar,
 	RichText, 
-} = wp.editor; // Import * from @wordpress/editor 
+} = wp.blockEditor; // Import * from @wordpress/blockEditor
 const { isBlobURL } = wp.blob;
+
 
 /**
  * Internal dependencies
@@ -45,7 +45,6 @@ import './editor.scss';
  * Module Constants
  */
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
-
 
 const blockAttributes = {
 	title: {
@@ -80,6 +79,7 @@ const blockAttributes = {
 	},
 };
 
+
 /**
  * Register: aa Gutenberg Block.
  *
@@ -111,7 +111,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	],
 	
 	attributes: blockAttributes,  // Block attributes for editing in the block inspector.
-	
+
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
 	 * This represents what the editor will render when the block is used.
@@ -119,6 +119,9 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 * The "edit" property must be a valid function.
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+	 *
+	 * @param {Object} props Props.
+	 * @returns {Mixed} JSX Component.
 	 */
 	edit: withNotices( ( { attributes, setAttributes, isSelected, className, noticeOperations, noticeUI } ) => {
 		
@@ -270,8 +273,10 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 * The "save" property must be specified and must be a valid function.
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+	 *
+	 * @param {Object} props Props.
+	 * @returns {Mixed} JSX Frontend HTML.
 	 */
-	 
 	save: ( { attributes, className } ) => {
 		
 		const { url, title, align, width, height, contentAlign, id } = attributes;

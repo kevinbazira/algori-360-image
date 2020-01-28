@@ -5,8 +5,8 @@ Contributors: [Kevin Bazira](http://kevinbazira.com)
 Tags: gutenberg, block, 360, image, photo, panorama, spherical-images, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 
 Requires at least: WP 5.0.0
-* Tested up to: WP 5.2
-* Stable tag: 1.0.4
+* Tested up to: WP 5.3
+* Stable tag: 1.0.5
 * License: GNU General Public License v2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -67,6 +67,15 @@ Most WordPress themes that are optimized for Gutenberg will work well with Algor
 
 # Changelog 
 
+= 1.0.5 - Jan 28 2020 =
+* Upgraded A-Frame from v0.9.0 to v1.0.3
+* Upgraded cgb-scripts from 1.13.0 to 1.22.0
+* Updated deprecated wp.editor.BlockControls to wp.blockEditor.BlockControls.
+* Updated deprecated wp.editor.MediaPlaceholder to wp.blockEditor.MediaPlaceholder.
+* Updated deprecated wp.editor.BlockAlignmentToolbar to wp.blockEditor.BlockAlignmentToolbar.
+* Updated deprecated wp.editor.MediaUploadCheck to wp.blockEditor.MediaUploadCheck.
+* Updated deprecated wp.editor.MediaUpload to wp.blockEditor.MediaUpload.
+
 = 1.0.4 - Jul 5 2019 =
 * Upgraded A-Frame from v0.8.2 to v0.9.0
 * Added Spinner to show 360 image loading is in progress instead of blank figure.
@@ -108,7 +117,7 @@ Most WordPress themes that are optimized for Gutenberg will work well with Algor
 * [create-guten-block](https://github.com/ahmadawais/create-guten-block) , (C) 2018 Ahmad Awais, [MIT](https://opensource.org/licenses/MIT)
 * [A-Frame](https://aframe.io/) , (C) 2015-2018 Mozilla and A-Frame Authors, [MIT](https://opensource.org/licenses/MIT)
 
-Algori 360 Image WordPress Plugin, Copyright 2019 Kevin Bazira<br/>
+Algori 360 Image WordPress Plugin, Copyright 2020 Kevin Bazira<br/>
 Algori 360 Image is distributed under the terms of the GNU GPL<br/><br/>
 
 

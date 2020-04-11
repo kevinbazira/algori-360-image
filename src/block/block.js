@@ -8,14 +8,12 @@
 /**
  * WordPress dependencies
  */
-const { 
-	IconButton, 
+const {
 	PanelBody,
-	TextControl,  
-	Toolbar, 
+	TextControl,
 	Spinner,
 	withNotices,
-	Notice	} = wp.components; // import { IconButton, PanelBody, RangeControl, ToggleControl, Toolbar, withNotices } from '@wordpress/components';
+	Notice	} = wp.components; // import { PanelBody, RangeControl, ToggleControl, withNotices } from '@wordpress/components';
 const { Fragment } = wp.element; // import { Fragment } from '@wordpress/element';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -25,7 +23,6 @@ const {
 	BlockAlignmentToolbar,
 	MediaPlaceholder,
 	MediaUpload,
-	MediaUploadCheck,
 	AlignmentToolbar,
 	RichText, 
 } = wp.blockEditor; // Import * from @wordpress/blockEditor
@@ -162,23 +159,6 @@ registerBlockType( 'cgb/block-algori-360-image', {
 						value={ align }
 						onChange={ updateAlignment }
 					/>
-					<Toolbar>
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={ onSelectImage }
-								allowedTypes={ ALLOWED_MEDIA_TYPES }
-								value={ id }
-								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
-										label={ __( 'Edit image' ) }
-										icon="edit"
-										onClick={ open }
-									/>
-								) }
-							/>
-						</MediaUploadCheck>
-					</Toolbar>
 				</BlockControls>
 				{ !! url && (
 					<InspectorControls>

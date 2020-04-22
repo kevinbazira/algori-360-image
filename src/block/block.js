@@ -10,8 +10,8 @@
  */
 const {
 	PanelBody,
-	TextControl,
 	Spinner,
+	TextControl,
 	withNotices,
 	Notice	} = wp.components; // import { PanelBody, RangeControl, ToggleControl, withNotices } from '@wordpress/components';
 const { Fragment } = wp.element; // import { Fragment } from '@wordpress/element';
@@ -22,6 +22,7 @@ const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	MediaPlaceholder,
+	MediaReplaceFlow,
 	MediaUpload,
 	AlignmentToolbar,
 	RichText, 
@@ -142,6 +143,11 @@ registerBlockType( 'cgb/block-algori-360-image', {
 			
 		}
 		
+		const onUploadError = ( message ) => {
+			noticeOperations.removeAllNotices();
+			noticeOperations.createErrorNotice( message );
+		}
+		
 		const updateAlignment = ( nextAlign ) => {
 
 			const extraUpdatedAttributes = [ 'wide', 'full' ].indexOf( nextAlign ) !== -1 ?
@@ -158,6 +164,15 @@ registerBlockType( 'cgb/block-algori-360-image', {
 					<BlockAlignmentToolbar
 						value={ align }
 						onChange={ updateAlignment }
+					/>
+					<MediaReplaceFlow
+						mediaId={ id }
+						mediaURL={ url }
+						allowedTypes={ ALLOWED_MEDIA_TYPES }
+						accept="image/*"
+						onSelect={ onSelectImage }
+						onSelectURL={ onSelectURL }
+						onError={ onUploadError }
 					/>
 				</BlockControls>
 				{ !! url && (

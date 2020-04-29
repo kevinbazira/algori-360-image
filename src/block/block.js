@@ -147,7 +147,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 			noticeOperations.removeAllNotices();
 			noticeOperations.createErrorNotice( message );
 		}
-		
+
 		const updateAlignment = ( nextAlign ) => {
 
 			const extraUpdatedAttributes = [ 'wide', 'full' ].indexOf( nextAlign ) !== -1 ?
@@ -296,6 +296,29 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/deprecated-blocks/
 	 */
 	deprecated: [ 
+		{
+			attributes: {
+				...blockAttributes,
+			},
+			
+			save: ( { attributes, className } ) => {
+		
+				const { url, title, align, width, height, contentAlign, id } = attributes;
+				
+				return (
+					<figure 
+						style={ [ 'wide', 'full' ].indexOf( align ) !== -1 ? { height } : { width, height } } 
+						className={ `align${align}` } 
+					>
+						<a-scene loading-screen="enabled: false;" embedded="">
+						  <a-entity camera="" look-controls="reverseMouseDrag: true"></a-entity>
+						  <a-sky src={ url }></a-sky>
+						</a-scene>
+					</figure>
+				);
+				
+			},
+		},
 		{
 			attributes: {
 				...blockAttributes,

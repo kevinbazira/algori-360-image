@@ -32,7 +32,7 @@ function algori_360_image_cgb_block_assets() { // phpcs:ignore
 	// Enqueue A-Frame JS
 	wp_enqueue_script( 
 		'algori_360_image-cgb-a-frame-js', 
-		plugins_url( '/dist/aframe-v1.0.3.min.js', dirname( __FILE__ ) ) );
+		plugins_url( '/dist/aframe-v1.0.4.min.js', dirname( __FILE__ ) ) );
 	
 	// Register block styles for both frontend + backend.
 	wp_register_style(

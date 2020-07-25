@@ -4,7 +4,7 @@ Tags: gutenberg, block, block editor, 360, image, photo, panorama, equirectangul
 Requires at least: 5.0.0
 Tested up to: 5.4
 Requires PHP: 5.6.0
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -67,6 +67,10 @@ Nope. Algori 360 Image only works with Gutenberg.
 Most WordPress themes that are optimized for Gutenberg will work well with Algori 360 Image. To get a full experience of the next-generation WordPress block editor, you’ll need a Gutenberg-ready WordPress theme, like [Algori Blogger](https://wordpress.org/themes/algori-blogger/) or [Algori Shop](https://wordpress.org/themes/algori-shop/).
 
 == Changelog ==
+
+= 1.0.7 - July 26 2020 =
+* Upgraded A-Frame from v1.0.3 to v1.0.4
+* Fixed mouse drag in VR mode / fullscreen mode on desktop
 
 = 1.0.6 - May 15 2020 =
 * Disabled VR mode orientation permission modal dialog

@@ -5,8 +5,8 @@ Contributors: [Kevin Bazira](http://kevinbazira.com)
 Tags: gutenberg, block, block editor, 360, image, photo, panorama, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 
 Requires at least: WP 5.0.0
-* Tested up to: WP 5.4
-* Stable tag: 1.0.7
+* Tested up to: WP 5.5
+* Stable tag: 1.0.8
 * License: GNU General Public License v2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -41,6 +41,7 @@ Please Note that this plugin;
 * Click on the 'Activate' button to use your new plugin right away.
 * Go to http://www.kevinbazira.com/blog/article/how-to-add-360-degree-panorama-images-and-videos-to-your-wordpress-website-using-algori-360-image-and-video-gutenberg-plugins for a guide on how to add and customize 360° images to your WordPress site.
 * Done :)
+* PS: Remember to click the **Enable auto-updates** link for this plugin so that you don't miss cool new features as they come in.
 
 # How to use 
 
@@ -66,6 +67,12 @@ Nope. Algori 360 Image only works with Gutenberg.
 Most WordPress themes that are optimized for Gutenberg will work well with Algori 360 Image. To get a full experience of the next-generation WordPress block editor, you’ll need a Gutenberg-ready WordPress theme, like [Algori Blogger](https://wordpress.org/themes/algori-blogger/) or [Algori Shop](https://wordpress.org/themes/algori-shop/).
 
 # Changelog 
+
+= 1.0.8 - Aug 15 2020 =
+* Added block preview using example metadata
+* Disabled AR mode button
+* Replaced block category 'common' with 'media'
+* Added block.json for WP block directory
 
 = 1.0.7 - July 26 2020 =
 * Upgraded A-Frame from v1.0.3 to v1.0.4

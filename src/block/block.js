@@ -108,6 +108,12 @@ registerBlockType( 'cgb/block-algori-360-image', {
 		__( 'equirectangular image - VR (Virtual Reality) photography' ), 
 	],
 	
+	example: {
+		attributes: {
+			url: '../wp-content/plugins/algori-360-image/360-image-example.jpg',
+		},
+	},
+	
 	attributes: blockAttributes,  // Block attributes for editing in the block inspector.
 
 	/**

@@ -1,0 +1,13 @@
+{
+	"name": "cgb/block-algori-360-image",
+	"title": "360 Image",
+	"category": "media",
+	"description": "Add interactive 360° images to your WordPress website with ease",
+	"supports": {
+		"align": true
+	},
+	"textdomain": "360-image",
+	"script": "file:./dist/blocks.build.js",
+	"editorStyle": "file:./dist/blocks.editor.build.css",
+	"style": "file:./dist/blocks.style.build.css"
+}

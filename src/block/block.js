@@ -77,6 +77,12 @@ const blockAttributes = {
 	},
 };
 
+/**
+ * Cater for block categories in older versions of WordPress i.e < WP 5.5
+ */
+const hasFormattingCategory = wp.blocks.getCategories().some( function( category ) {
+	return category.slug === 'common';
+} );
 
 /**
  * Register: aa Gutenberg Block.
@@ -100,7 +106,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 	
 	icon: 'format-image', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	
-	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: hasFormattingCategory ? 'common' : 'media', // Block category — Group blocks together based on common traits E.g. text, media, design, widgets, embeds, reusable.
 	
 	keywords: [ // Block search keywords
 		__( 'algori panorama image - three sixty degree photo' ), 

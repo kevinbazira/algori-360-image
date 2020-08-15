@@ -81,7 +81,7 @@ function algori_360_image_cgb_block_assets() { // phpcs:ignore
 	 * @since 1.16.0
 	 */
 	register_block_type(
-		'cgb/block-algori-360-image', array(
+		'algori-360-image/block-algori-360-image', array(
 			// Enqueue blocks.style.build.css on both frontend & backend.
 			'style'         => 'algori_360_image-cgb-style-css',
 			// Enqueue blocks.build.js in the editor only.

@@ -97,7 +97,7 @@ const hasFormattingCategory = wp.blocks.getCategories().some( function( category
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'cgb/block-algori-360-image', {
+registerBlockType( 'algori-360-image/block-algori-360-image', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	
 	title: __( '360° Image' ), // Block title.
@@ -261,7 +261,7 @@ registerBlockType( 'cgb/block-algori-360-image', {
 				{ isBlobURL( url ) && <Spinner /> }
 				<figure 
 					style={ [ 'wide', 'full' ].indexOf( align ) !== -1 ? { height } : { width, height } } // Remove width from style on wide alignments i.e delegate it to theme
-					className={ `wp-block-cgb-block-algori-360-image align${align}` } 
+					className={ `wp-block-algori-360-image-block-algori-360-image align${align}` } 
 				>
 					<a-scene loading-screen="enabled: false;" embedded>
 					  <a-entity camera="" look-controls="reverseMouseDrag: true"></a-entity>

@@ -73,6 +73,7 @@ Most WordPress themes that are optimized for Gutenberg will work well with Algor
 * Added block preview using example metadata
 * Disabled AR mode button
 * Replaced block category 'common' with 'media'
+* Updated Algori 360 Image general namespace
 * Added block.json for WP block directory
 
 = 1.0.7 - July 26 2020 =

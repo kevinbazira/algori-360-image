@@ -116,11 +116,17 @@ registerBlockType( 'algori-360-image/block-algori-360-image', {
 	
 	example: {
 		attributes: {
-			url: '../wp-content/plugins/algori-360-image/360-image-example.jpg',
+			url: '../wp-content/plugins/360-image/360-image-example.jpg',
 		},
 	},
 	
 	attributes: blockAttributes,  // Block attributes for editing in the block inspector.
+	
+	getEditWrapperProps( attributes ) {
+		return {
+			'data-align': attributes.align,
+		};
+	},
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.

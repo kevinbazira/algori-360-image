@@ -2,7 +2,7 @@
 Contributors: kevinbazira
 Tags: gutenberg, block, block editor, 360, image, photo, panorama, equirectangular-photos, 3D-images, VR, Virtual Reality, photography
 Requires at least: 5.0.0
-Tested up to: 6.0
+Tested up to: 6.4.1
 Requires PHP: 5.6.0
 Stable tag: 1.0.9
 License: GNU General Public License v2 or later
